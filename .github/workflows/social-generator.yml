@@ -10,10 +10,10 @@ jobs:
         name: OpenAI Completion
         id: openai_completion
         with:
-          prompt: "act as a software expert in team topologies and write a tweets that explain the importance of platform teams, do not quote the text"
+          prompt: "act as a software expert in team topologies and write a tweets that explain the importance of platform teams"
         env:
           OPENAI_API_KEY: ${{ secrets.OPENAI_API_KEY }}
       - uses: actions/github-script@v5
         name: Print the response text
         with:
-          script:  console.log(JSON.parse('${{ steps.openai_completion.outputs.response }}').choices[0].message.content)
+          script:  console.log(JSON.parse('${{ steps.openai_completion.outputs.response }}'.replaceAll("\\\"","")).choices[0].message.content)
