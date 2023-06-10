@@ -18,7 +18,7 @@ jobs:
         with:
           script:  console.log(JSON.parse(`${{ steps.openai_completion.outputs.response }}`.replace(/\\/g,"").replace(/""/g,'"')).choices[0].message.content)
       - name: Create a Trello Card
-        uses: kanekotic/trello-create-card-action@main
+        uses: TrisNol/trello-create-card-action@main
         with:
           api_key: ${{ secrets.TRELLO_API_KEY }}
           token: ${{ secrets.TRELLO_TOKEN }}
